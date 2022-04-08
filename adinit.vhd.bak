@@ -5,8 +5,8 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 entity adinit is 
     port(   clk :in  std_logic;
             EN   :in  std_logic;
-            OK  :out std_logic;
-				TXD  :out std_logic);
+            OK  :out std_logic
+	    	TXD  :out std_logic);
 end entity;
 architecture behavior of adinit is
     
@@ -17,7 +17,7 @@ architecture behavior of adinit is
     --signal  com3:std_logic_vector(7 downto 0):=X"38";
     signal  ref_buffer:std_logic_vector(39 downto 0):=X"2008104038";
 	signal  ref:std_logic;
-    signal  init_ok:std_logic_vector(5 downto 0):="000000";--101000
+    signal  init_ok:std_logic(5 downto 0):="000000";--101000
     
     begin
 
@@ -31,7 +31,6 @@ architecture behavior of adinit is
             else
 		    ref<=ref_buffer(39);
 		    ref_buffer(39 downto 1)<=ref_buffer(38 downto 0);
-            init_ok<=init_ok+'1';
             end if;
 		end if;
     end if;   

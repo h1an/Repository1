@@ -9,6 +9,9 @@ entity fre_div is
 end fre_div;
 architecture behaviour of  fre_div is
     signal cnt:std_logic_vector(9 downto 0);
+    signal cnt:std_logic_vector(4 downto 0);
+
+    
     begin
     process(main_clk)
     
@@ -19,8 +22,14 @@ architecture behaviour of  fre_div is
         else
             cnt<=cnt+'1';
         end if ;
+        if cnt1="11001"then
+            cnt <= (others => '0');
+        else
+            cnt1<=cnt1+'1';
+        end if ;
     end if;
-    uart_clk<=cnt;--div_factor: 434
+    uart_clk<=cnt(9);--div_factor: 434
+    ad_cl<=cnt1(4);--div_factor：25（11001）
     end process;
 end architecture;
  
